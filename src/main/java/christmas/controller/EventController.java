@@ -10,6 +10,7 @@ public class EventController {
 
     public void eventStart() {
         int userVisitDate = inputEventDate();
+        String userOrderMenu = inputOrderMenu();
     }
 
     private int inputEventDate() {
@@ -17,5 +18,11 @@ public class EventController {
         inputView.ExpectedVisitDate();
         int eventDate;
         return eventDate = inputView.userDate();
+    }
+
+    private String inputOrderMenu() {
+        inputView.orderMenuNumberOfMenus();
+        String eventMenu;
+        return eventMenu = inputView.userMenu();
     }
 }
