@@ -9,7 +9,13 @@ public class EventController {
     InputView inputView = new InputView();
 
     public void eventStart() {
-        inputView.printEventStart();
+        int userVisitDate = inputEventDate();
+    }
 
+    private int inputEventDate() {
+        inputView.EventStart();
+        inputView.ExpectedVisitDate();
+        int eventDate;
+        return eventDate = inputView.userDate();
     }
 }
