@@ -1,2 +1,7 @@
-package christmas.domain.price;public class Price {
+package christmas.domain.price;
+
+public class Price {
+
+    public Price() {
+    }
 }
