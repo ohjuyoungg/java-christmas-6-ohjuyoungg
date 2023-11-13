@@ -1,6 +1,8 @@
 package christmas.view;
 
 import camp.nextstep.edu.missionutils.Console;
+import christmas.domain.date.Date;
+import christmas.domain.menu.Menu;
 import christmas.utils.constants.InputComment;
 import christmas.utils.validator.DateValidator;
 import christmas.utils.validator.MenuValidator;
@@ -11,10 +13,12 @@ public class InputView {
         while (true) {
             String input = Console.readLine();
             if (DateValidator.validateDateErrors(input)) {
+                int day = Integer.parseInt(input);
                 return DateValidator.userInput(input);
             }
         }
     }
+
 
     public static String userMenu() {
         while (true) {
@@ -35,5 +39,10 @@ public class InputView {
 
     public void orderMenuNumberOfMenus() {
         System.out.println(InputComment.GET_THE_MENU_AND_QUANTITY_TO_ORDER.getInputComment());
+    }
+
+    public static void eventBenefitsPreview(int day) {
+        String message = String.format(InputComment.EVENT_BENEFITS_PREVIEW.getInputComment(), day);
+        System.out.println(message);
     }
 }
