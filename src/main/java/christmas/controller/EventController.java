@@ -1,28 +1,35 @@
 package christmas.controller;
 
+import christmas.domain.Event;
+import christmas.domain.date.Date;
+import christmas.domain.menu.Menu;
+import christmas.domain.order.Order;
 import christmas.view.InputView;
 import christmas.view.OutputView;
 
 public class EventController {
 
     OutputView outputView = new OutputView();
-    InputView inputView = new InputView();
+    private final InputView inputView = new InputView();
 
     public void eventStart() {
-        int userVisitDate = inputEventDate();
-        String userOrderMenu = inputOrderMenu();
+        Date userVisitDate = inputEventDate();
+        Order userOrderMenu = inputOrderMenu();
+        InputView.eventBenefitsPreview(userVisitDate.getDate());
+        Event event = new Event(userVisitDate, userOrderMenu);
     }
 
-    private int inputEventDate() {
+    private Date inputEventDate() {
         inputView.EventStart();
         inputView.ExpectedVisitDate();
-        int eventDate;
-        return eventDate = inputView.userDate();
+        int eventDate = inputView.userDate();
+        return new Date(eventDate);
     }
 
-    private String inputOrderMenu() {
+    private Order inputOrderMenu() {
         inputView.orderMenuNumberOfMenus();
-        String eventMenu;
-        return eventMenu = inputView.userMenu();
+        String eventMenu = inputView.userMenu();
+        Order userOrder = new Order();
+        return userOrder;
     }
 }
