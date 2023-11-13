@@ -10,7 +10,7 @@ public class Order {
         this.orderItems = new HashMap<>();
     }
 
-    public void addOrderItem(String menu, int quantity) {
+    public void addOrder(String menu, int quantity) {
         orderItems.put(menu, quantity);
     }
 
