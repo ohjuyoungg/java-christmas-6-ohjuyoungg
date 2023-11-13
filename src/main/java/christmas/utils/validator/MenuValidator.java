@@ -3,6 +3,8 @@ package christmas.utils.validator;
 import christmas.domain.menu.MenuInfo;
 import christmas.utils.constants.ExceptionMessage;
 import christmas.view.InputView;
+
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.StringTokenizer;
@@ -24,11 +26,6 @@ public class MenuValidator {
         MenuInfo.CHAMPAGNE
     );
 
-    private static void validateMenu(String input) {
-        isBlank(input);
-        validateOrder(input);
-    }
-
     public static String userInput(String input) {
         try {
             return input;
@@ -48,34 +45,59 @@ public class MenuValidator {
         }
     }
 
+    private static void validateMenu(String input) {
+        isBlank(input);
+        validateOrder(input);
+    }
+
     private static void isBlank(String menuValue) {
         if (menuValue == null || menuValue.isBlank()) {
             throw new IllegalArgumentException(ExceptionMessage.INVALID_ORDER.getExceptionMessage());
         }
     }
 
-    public static void validateOrder(String order) {
-        StringTokenizer tokenizer = new StringTokenizer(order, ", ");
+    private static void validateOrder(String order) {
+        StringTokenizer tokenizer = new StringTokenizer(order, ",");
+        List<String> validationErrors = new ArrayList<>();
+        boolean containsNonDrink = false;
+
         while (tokenizer.hasMoreTokens()) {
-            validateOrderItem(tokenizer.nextToken());
+            String orderItem = tokenizer.nextToken().trim();
+            try {
+                validateOrderItem(orderItem);
+                String menuName = orderItem.split("-")[0].trim();
+                if (!MenuInfo.isDrink(menuName)) {
+                    containsNonDrink = true;
+                }
+            } catch (IllegalArgumentException e) {
+                validationErrors.add(ExceptionMessage.INVALID_ORDER.getExceptionMessage());
+            }
+        }
+
+        if (!validationErrors.isEmpty() || !containsNonDrink) {
+            throw new IllegalArgumentException(
+                String.join(System.lineSeparator(), validationErrors));
         }
     }
 
     private static void validateOrderItem(String orderItem) {
-        StringTokenizer tokenizer = new StringTokenizer(orderItem, "-");
-        if (tokenizer.countTokens() != 2) {
+        String[] parts = orderItem.split("-");
+
+        if (parts.length != 2 || parts[0].trim().isEmpty() || parts[1].trim().isEmpty()) {
             throw new IllegalArgumentException(ExceptionMessage.INVALID_ORDER.getExceptionMessage());
         }
-        String menuName = tokenizer.nextToken().trim();
+
+        String menuName = parts[0].trim();
         int quantity;
+
         try {
-            quantity = Integer.parseInt(tokenizer.nextToken().trim());
+            quantity = Integer.parseInt(parts[1].trim());
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException(ExceptionMessage.INVALID_ORDER.getExceptionMessage());
         }
+
         validateNotOnMenu(menuName);
         validateQuantity(quantity);
-        validateOnlyDrink(menuName, quantity);
         validateOrderLimit(quantity);
     }
 
@@ -91,12 +113,6 @@ public class MenuValidator {
         }
     }
 
-    private static void validateOnlyDrink(String menuName, int quantity) {
-        if (MenuInfo.isDrink(menuName) && quantity > 0) {
-            throw new IllegalArgumentException(ExceptionMessage.INVALID_ORDER.getExceptionMessage());
-        }
-    }
-
     private static void validateOrderLimit(int quantity) {
         if (quantity < 1 || quantity > 20) {
             throw new IllegalArgumentException(ExceptionMessage.INVALID_ORDER.getExceptionMessage());
@@ -107,4 +123,3 @@ public class MenuValidator {
         return MENU_LIST.stream().anyMatch(menu -> menu.getMenuName().equals(menuName));
     }
 }
-
