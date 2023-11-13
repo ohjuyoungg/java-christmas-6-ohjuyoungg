@@ -2,21 +2,25 @@ package christmas.controller;
 
 import christmas.domain.Event;
 import christmas.domain.date.Date;
-import christmas.domain.menu.Menu;
 import christmas.domain.order.Order;
+import christmas.service.EventService;
 import christmas.view.InputView;
 import christmas.view.OutputView;
 
 public class EventController {
 
-    OutputView outputView = new OutputView();
+    private final OutputView outputView = new OutputView();
     private final InputView inputView = new InputView();
+    private final EventService eventService = new EventService();
+
 
     public void eventStart() {
         Date userVisitDate = inputEventDate();
         Order userOrderMenu = inputOrderMenu();
         InputView.eventBenefitsPreview(userVisitDate.getDate());
         Event event = new Event(userVisitDate, userOrderMenu);
+        outputView.orderMenu();
+        eventService.printMenu(userOrderMenu);
     }
 
     private Date inputEventDate() {
@@ -30,6 +34,7 @@ public class EventController {
         inputView.orderMenuNumberOfMenus();
         String eventMenu = inputView.userMenu();
         Order userOrder = new Order();
+        InputView.tokenizeAndAddToOrder(eventMenu, userOrder);
         return userOrder;
     }
 }
