@@ -21,7 +21,6 @@ public class InputView {
         }
     }
 
-
     public static String userMenu() {
         while (true) {
             String input = Console.readLine();
@@ -31,15 +30,15 @@ public class InputView {
         }
     }
 
-    public void EventStart() {
+    public static void eventStart() {
         System.out.println(InputComment.EVENT_PLANNER_STATIONERY_START.getInputComment());
     }
 
-    public void ExpectedVisitDate() {
+    public static void expectedVisitDate() {
         System.out.println(InputComment.EXPECTED_DATE_OF_VISIT_TO_RESTAURANT.getInputComment());
     }
 
-    public void orderMenuNumberOfMenus() {
+    public static void orderMenuNumberOfMenus() {
         System.out.println(InputComment.GET_THE_MENU_AND_QUANTITY_TO_ORDER.getInputComment());
     }
 
@@ -60,5 +59,3 @@ public class InputView {
         }
     }
 }
-
-
