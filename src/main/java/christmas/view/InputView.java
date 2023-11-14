@@ -12,23 +12,22 @@ import java.util.StringTokenizer;
 public class InputView {
 
     public static int userDate() {
-        while (true) {
-            String input = Console.readLine();
-            if (DateValidator.validateDateErrors(input)) {
-               Integer.parseInt(input);
-                return DateValidator.userInput(input);
-            }
+        String input = Console.readLine();
+        if (DateValidator.validateDateErrors(input)) {
+            Integer.parseInt(input);
+            return DateValidator.userInput(input);
         }
+        return userDate();
     }
 
     public static String userMenu() {
-        while (true) {
-            String input = Console.readLine();
-            if (MenuValidator.validateMenuErrors(input)) {
-                return MenuValidator.userInput(input);
-            }
+        String input = Console.readLine();
+        if (MenuValidator.validateMenuErrors(input)) {
+            return MenuValidator.userInput(input);
         }
+        return userMenu();
     }
+
 
     public static void eventStart() {
         System.out.println(InputComment.EVENT_PLANNER_STATIONERY_START.getInputComment());
