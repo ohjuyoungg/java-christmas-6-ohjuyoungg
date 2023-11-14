@@ -44,8 +44,11 @@ public class MenuValidator {
     }
 
     private static void validateOrder(String order) {
+        isBlank(order);
+
         StringTokenizer tokenizer = new StringTokenizer(order, ",");
         List<String> validationErrors = new ArrayList<>();
+        int totalQuantity = 0;
         boolean containsNonDrink = false;
 
         while (tokenizer.hasMoreTokens()) {
@@ -56,12 +59,20 @@ public class MenuValidator {
                 if (!MenuInfo.isDrink(menuName)) {
                     containsNonDrink = true;
                 }
+
+                int quantity = Integer.parseInt(orderItem.split("-")[1].trim());
+                totalQuantity += quantity;
+                validateOrderLimit(totalQuantity);
             } catch (IllegalArgumentException e) {
                 validationErrors.add(ExceptionMessage.INVALID_ORDER.getExceptionMessage());
             }
         }
 
-        if (!validationErrors.isEmpty() || !containsNonDrink) {
+        if (!containsNonDrink) {
+            validationErrors.add(ExceptionMessage.INVALID_ORDER.getExceptionMessage());
+        }
+
+        if (!validationErrors.isEmpty()) {
             throw new IllegalArgumentException(
                 String.join(System.lineSeparator(), validationErrors));
         }
@@ -100,8 +111,8 @@ public class MenuValidator {
         }
     }
 
-    private static void validateOrderLimit(int quantity) {
-        if (quantity < 1 || quantity > 20) {
+    private static void validateOrderLimit(int totalQuantity) {
+        if (totalQuantity > 20) {
             throw new IllegalArgumentException(ExceptionMessage.INVALID_ORDER.getExceptionMessage());
         }
     }
