@@ -37,15 +37,15 @@ public enum MenuInfo {
         return price;
     }
 
-    public static boolean isZeroCoke(String menuName) {
+    private static boolean isZeroCoke(String menuName) {
         return "제로콜라".equals(menuName);
     }
 
-    public static boolean isRedWine(String menuName) {
+    private static boolean isRedWine(String menuName) {
         return "레드와인".equals(menuName);
     }
 
-    public static boolean isChampagne(String menuName) {
+    private static boolean isChampagne(String menuName) {
         return "샴페인".equals(menuName);
     }
 
