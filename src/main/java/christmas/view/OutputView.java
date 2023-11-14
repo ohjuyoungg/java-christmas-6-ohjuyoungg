@@ -21,6 +21,8 @@ public class OutputView {
 
     public static void benefitDetails() {
         System.out.println();
-        System.out.println(OutputComment.BENEFIT_DETAILS);
+        System.out.println(OutputComment.BENEFIT_DETAILS.getOutputComment());
     }
 }
+
+
