@@ -1,38 +1,36 @@
 package christmas.controller;
 
-import christmas.domain.Event;
-import christmas.domain.date.Date;
 import christmas.domain.order.Order;
-import christmas.service.EventService;
+import christmas.service.EventPlanner;
+import christmas.service.BeforeEventService;
 import christmas.view.InputView;
 import christmas.view.OutputView;
 
 public class EventController {
 
-    private final OutputView outputView = new OutputView();
-    private final InputView inputView = new InputView();
-    private final EventService eventService = new EventService();
-
-
     public void eventStart() {
-        Date userVisitDate = inputEventDate();
+        int userVisitDate = inputEventDate();
         Order userOrderMenu = inputOrderMenu();
-        InputView.eventBenefitsPreview(userVisitDate.getDate());
-        Event event = new Event(userVisitDate, userOrderMenu);
-        outputView.orderMenu();
-        eventService.printMenu(userOrderMenu);
+        InputView.eventBenefitsPreview(userVisitDate);
+        OutputView.orderMenu();
+        BeforeEventService.printMenu(userOrderMenu);
+        int totalPrice = BeforeEventService.calculateTotalPrice(userOrderMenu);
+        OutputView.beforeDiscount(totalPrice);
+        OutputView.giveawayMenu();
+        EventPlanner.giveAway(totalPrice);
+        OutputView.benefitDetails();
     }
 
-    private Date inputEventDate() {
-        inputView.EventStart();
-        inputView.ExpectedVisitDate();
-        int eventDate = inputView.userDate();
-        return new Date(eventDate);
+    private int inputEventDate() {
+        InputView.eventStart();
+        InputView.expectedVisitDate();
+        int eventDate = InputView.userDate();
+        return eventDate;
     }
 
     private Order inputOrderMenu() {
-        inputView.orderMenuNumberOfMenus();
-        String eventMenu = inputView.userMenu();
+        InputView.orderMenuNumberOfMenus();
+        String eventMenu = InputView.userMenu();
         Order userOrder = new Order();
         InputView.tokenizeAndAddToOrder(eventMenu, userOrder);
         return userOrder;
