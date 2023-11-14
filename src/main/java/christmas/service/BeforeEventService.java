@@ -27,8 +27,6 @@ public class BeforeEventService {
         }
     }
 
-
-
     public static int calculateTotalPrice(Order userOrder) {
         return userOrder.getOrderItems()
             .entrySet()
