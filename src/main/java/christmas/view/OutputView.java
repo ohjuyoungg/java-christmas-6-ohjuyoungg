@@ -14,19 +14,16 @@ public class OutputView {
     }
 
     public static void beforeDiscount(int totalAmount) {
-        System.out.println();
-        System.out.println(OutputComment.TOTAL_ORDER_AMOUNT_BEFORE_DISCOUNT.getOutputComment());
+        System.out.println("\n" + OutputComment.TOTAL_ORDER_AMOUNT_BEFORE_DISCOUNT.getOutputComment());
         System.out.printf("%,d원%n", totalAmount);
     }
 
     public static void giveawayMenu() {
-        System.out.println();
-        System.out.println(OutputComment.GIVEAWAY_MENU.getOutputComment());
+        System.out.println("\n" + OutputComment.GIVEAWAY_MENU.getOutputComment());
     }
 
     public static void benefitDetails() {
-        System.out.println();
-        System.out.println(OutputComment.BENEFIT_DETAILS.getOutputComment());
+        System.out.println("\n" + OutputComment.BENEFIT_DETAILS.getOutputComment());
     }
 
     public static void benefits(Discount discount, int beforeDiscountPrice) {

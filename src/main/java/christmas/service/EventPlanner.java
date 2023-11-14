@@ -26,20 +26,16 @@ public class EventPlanner {
     private static void calculateTotalBenefits(int beforeDiscountPrice, Discount discount) {
         DecimalFormat df = new DecimalFormat("#,###");
         int benefits = discount.getTotalAmount();
-
         if (benefits <= 0) {
-            System.out.println();
-            System.out.println(OutputComment.TOTAL_BENEFIT_DETAILS.getOutputComment());
+            System.out.println("\n" + OutputComment.TOTAL_BENEFIT_DETAILS.getOutputComment());
             System.out.println(0 + OutputComment.KRW.getOutputComment());
         }
         if (beforeDiscountPrice >= MINIMUM_PRICE_FOR_GIVEAWAY) {
             int total = benefits + 25000;
-            System.out.println();
-            System.out.println(OutputComment.TOTAL_BENEFIT_DETAILS.getOutputComment());
+            System.out.println("\n" + OutputComment.TOTAL_BENEFIT_DETAILS.getOutputComment());
             System.out.println("-" + df.format(total) + OutputComment.KRW.getOutputComment());
         } else if (beforeDiscountPrice < MINIMUM_PRICE_FOR_GIVEAWAY && benefits > 0) {
-            System.out.println();
-            System.out.println(OutputComment.TOTAL_BENEFIT_DETAILS.getOutputComment());
+            System.out.println("\n" + OutputComment.TOTAL_BENEFIT_DETAILS.getOutputComment());
             System.out.println("-" + df.format(benefits) + OutputComment.KRW.getOutputComment());
         }
     }
@@ -54,14 +50,12 @@ public class EventPlanner {
 
     private static void printAfterDiscountPrice(int beforeDiscountPrice, int benefits) {
         int afterDiscountPrice = beforeDiscountPrice - benefits;
-        System.out.println();
-        System.out.println(OutputComment.ESTIMATED_PAYMENT_AMOUNT_AFTER_DISCOUNT.getOutputComment());
+        System.out.println("\n" + OutputComment.ESTIMATED_PAYMENT_AMOUNT_AFTER_DISCOUNT.getOutputComment());
         System.out.println(df.format(afterDiscountPrice) + OutputComment.KRW.getOutputComment());
     }
 
     private static void calculateEventBadge(int totalBenefits) {
-        System.out.println();
-        System.out.println(OutputComment.DECEMBER_EVENT_BADGE.getOutputComment());
+        System.out.println("\n" + OutputComment.DECEMBER_EVENT_BADGE.getOutputComment());
         if (totalBenefits >= 20000) {
             System.out.println("산타");
         } else if (totalBenefits >= 10000) {

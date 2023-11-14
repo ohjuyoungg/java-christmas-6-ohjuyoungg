@@ -43,8 +43,7 @@ public class InputView {
 
     public static void eventBenefitsPreview(int day) {
         String message = String.format(InputComment.EVENT_BENEFITS_PREVIEW.getInputComment(), day);
-        System.out.println(message);
-        System.out.println();
+        System.out.println(message + "\n");
     }
 
     public static void tokenizeAndAddToOrder(String eventMenu, Order userOrder) {
