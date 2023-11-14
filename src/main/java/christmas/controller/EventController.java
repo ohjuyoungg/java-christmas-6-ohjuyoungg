@@ -19,6 +19,7 @@ public class EventController {
         OutputView.giveawayMenu();
         EventPlanner.giveAway(totalPrice);
         OutputView.benefitDetails();
+        EventPlanner.calculateBenefits(userVisitDate, userOrderMenu, totalPrice);
     }
 
     private int inputEventDate() {
