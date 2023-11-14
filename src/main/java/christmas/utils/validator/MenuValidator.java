@@ -3,7 +3,6 @@ package christmas.utils.validator;
 import christmas.domain.menu.MenuInfo;
 import christmas.utils.constants.ExceptionMessage;
 import christmas.view.InputView;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
