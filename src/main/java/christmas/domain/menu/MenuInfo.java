@@ -52,4 +52,8 @@ public enum MenuInfo {
     public static boolean isDrink(String menuName) {
         return isZeroCoke(menuName) || isRedWine(menuName) || isChampagne(menuName);
     }
+
+    public static boolean isDessert(String menuName) {
+        return CHOCOLATE_CAKE.menuName.equals(menuName) || ICE_CREAM.menuName.equals(menuName);
+    }
 }
