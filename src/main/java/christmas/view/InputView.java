@@ -15,7 +15,7 @@ public class InputView {
         while (true) {
             String input = Console.readLine();
             if (DateValidator.validateDateErrors(input)) {
-                int day = Integer.parseInt(input);
+               Integer.parseInt(input);
                 return DateValidator.userInput(input);
             }
         }
