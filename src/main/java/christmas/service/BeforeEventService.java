@@ -8,7 +8,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
-public class EventService {
+public class BeforeEventService {
 
     public static void printMenu(Order userOrder) {
         List<String> orderedMenu = new ArrayList<>();
