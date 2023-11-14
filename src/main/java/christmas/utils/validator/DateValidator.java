@@ -5,12 +5,6 @@ import christmas.view.InputView;
 
 public class DateValidator {
 
-    private static void validateDate(String input) {
-        isBlank(input);
-        isString(input);
-        validateDateRange(Integer.parseInt(input));
-    }
-
     public static int userInput(String input) {
         try {
             return Integer.parseInt(input);
@@ -30,6 +24,12 @@ public class DateValidator {
         }
     }
 
+    private static void validateDate(String input) {
+        isBlank(input);
+        isNumber(input);
+        validateDateRange(Integer.parseInt(input));
+    }
+
     private static void isBlank(String dateValue) {
         if (dateValue == null || dateValue.isBlank()) {
             throw new IllegalArgumentException(ExceptionMessage.INVALID_DATE.getExceptionMessage());
@@ -42,7 +42,7 @@ public class DateValidator {
         }
     }
 
-    private static void isString(String dateValue) {
+    private static void isNumber(String dateValue) {
         if (!dateValue.matches("\\d+")) {
             throw new IllegalArgumentException(ExceptionMessage.INVALID_DATE.getExceptionMessage());
         }
