@@ -9,7 +9,6 @@ public enum OutputComment {
     ESTIMATED_PAYMENT_AMOUNT_AFTER_DISCOUNT("<할인 후 예상 결제 금액>"),
     DECEMBER_EVENT_BADGE("<12월 이벤트 배지>"),
     KRW("원"),
-    COUNT("개"),
     NOTHING("없음");
 
     private final String outputComment;
