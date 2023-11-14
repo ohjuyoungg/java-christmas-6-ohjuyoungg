@@ -29,12 +29,12 @@ public enum MenuInfo {
         this.price = price;
     }
 
-    public String getMenuName() {
-        return menuName;
+    public static boolean isDrink(String menuName) {
+        return isZeroCoke(menuName) || isRedWine(menuName) || isChampagne(menuName);
     }
 
-    public int getPrice() {
-        return price;
+    public static boolean isDessert(String menuName) {
+        return CHOCOLATE_CAKE.menuName.equals(menuName) || ICE_CREAM.menuName.equals(menuName);
     }
 
     private static boolean isZeroCoke(String menuName) {
@@ -49,11 +49,11 @@ public enum MenuInfo {
         return "샴페인".equals(menuName);
     }
 
-    public static boolean isDrink(String menuName) {
-        return isZeroCoke(menuName) || isRedWine(menuName) || isChampagne(menuName);
+    public String getMenuName() {
+        return menuName;
     }
 
-    public static boolean isDessert(String menuName) {
-        return CHOCOLATE_CAKE.menuName.equals(menuName) || ICE_CREAM.menuName.equals(menuName);
+    public int getPrice() {
+        return price;
     }
 }
