@@ -11,20 +11,7 @@ import java.util.StringTokenizer;
 
 public class MenuValidator {
 
-    private static final List<MenuInfo> MENU_LIST = Arrays.asList(
-        MenuInfo.BUTTON_MUSHROOM_SOUP,
-        MenuInfo.TAPAS,
-        MenuInfo.CAESAR_SALAD,
-        MenuInfo.T_BONE_STEAK,
-        MenuInfo.BARBECUE_RIBS,
-        MenuInfo.SEA_FOOD_PASTA,
-        MenuInfo.CHRISTMAS_PASTA,
-        MenuInfo.CHOCOLATE_CAKE,
-        MenuInfo.ICE_CREAM,
-        MenuInfo.ZERO_COKE,
-        MenuInfo.RED_WINE,
-        MenuInfo.CHAMPAGNE
-    );
+    private static final List<MenuInfo> MENU_LIST = Arrays.asList(MenuInfo.values());
 
     public static String userInput(String input) {
         try {
