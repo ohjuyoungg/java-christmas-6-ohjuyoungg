@@ -4,7 +4,6 @@ import static christmas.domain.menu.MenuInfo.isDessert;
 import static christmas.service.BeforeEventService.getMenuPrice;
 
 import christmas.domain.menu.MenuInfo;
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
