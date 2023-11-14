@@ -10,10 +10,10 @@ import java.util.Map;
 
 public class Order {
 
-    private final Map<String, Integer> orderItems;
+    private final LinkedHashMap<String, Integer> orderItems;
 
     public Order() {
-        this.orderItems = new HashMap<>();
+        this.orderItems = new LinkedHashMap<>();
     }
 
     public void addOrder(String menu, int quantity) {
@@ -21,7 +21,7 @@ public class Order {
     }
 
     public LinkedHashMap<String, Integer> getOrderItems() {
-        return new LinkedHashMap<>(orderItems);
+        return orderItems;
     }
 
     public int calculateDessertDiscount(int discountPerMenu) {
