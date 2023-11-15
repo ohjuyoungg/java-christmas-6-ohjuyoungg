@@ -1,13 +1,13 @@
 package christmas.view;
 
-import static christmas.domain.benefit.DiscountType.CHRISTMAS;
-import static christmas.domain.benefit.DiscountType.SPECIAL;
-import static christmas.domain.benefit.DiscountType.WEEKDAY;
-import static christmas.domain.benefit.DiscountType.WEEKEND;
+import static christmas.domain.discount.DiscountType.CHRISTMAS;
+import static christmas.domain.discount.DiscountType.SPECIAL;
+import static christmas.domain.discount.DiscountType.WEEKDAY;
+import static christmas.domain.discount.DiscountType.WEEKEND;
 import static christmas.domain.service.EventPlanner.MINIMUM_PRICE_FOR_GIVEAWAY;
 import static christmas.domain.service.EventPlanner.df;
 
-import christmas.domain.benefit.Discount;
+import christmas.domain.discount.Discount;
 import christmas.utils.constants.OutputComment;
 import java.text.DecimalFormat;
 
@@ -31,7 +31,8 @@ public class OutputView {
     }
 
     public static void benefits(Discount discount, int beforeDiscountPrice) {
-        if (discount.getAmount(CHRISTMAS) > 0) {System.out.println(OutputComment.CHRISTMAS_D_DAY_DISCOUNT.getOutputComment() + df.format(discount.getAmount(CHRISTMAS)) + OutputComment.KRW.getOutputComment());
+        if (discount.getAmount(CHRISTMAS) > 0) {
+            System.out.println(OutputComment.CHRISTMAS_D_DAY_DISCOUNT.getOutputComment() + df.format(discount.getAmount(CHRISTMAS)) + OutputComment.KRW.getOutputComment());
         }
         if (discount.getAmount(WEEKDAY) > 0) {
             System.out.println(OutputComment.WEEKDAY_DISCOUNT.getOutputComment() + df.format(discount.getAmount(WEEKDAY)) + OutputComment.KRW.getOutputComment());
