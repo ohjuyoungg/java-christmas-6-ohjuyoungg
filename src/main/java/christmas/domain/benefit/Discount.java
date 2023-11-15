@@ -47,7 +47,6 @@ public class Discount {
     private int calculateWeekendDiscount(int eventDate, Order userOrder) {
         DayOfWeek dayOfWeek = endOfDecember.plusDays(eventDate - 1).getDayOfWeek();
         int discountPerMainDish = 2023;
-
         if (eventDate >= 26) {
             return 0;
         }
@@ -60,7 +59,6 @@ public class Discount {
     private int calculateWeekdayDiscount(int eventDate, Order userOrder) {
         DayOfWeek dayOfWeek = endOfDecember.plusDays(eventDate - 1).getDayOfWeek();
         int discountPerDessert = 2023;
-
         if (eventDate >= 26) {
             return 0;
         }
@@ -73,7 +71,6 @@ public class Discount {
 
     private int calculateStarDiscount(int eventDate, DayOfWeek dayOfWeek) {
         LocalDate dateUtils = LocalDate.of(2023, 12, eventDate);
-
         int discountAmount = 0;
         if (dayOfWeek == DayOfWeek.SUNDAY || dateUtils.getDayOfMonth() == 25) {
             discountAmount = 1000;
