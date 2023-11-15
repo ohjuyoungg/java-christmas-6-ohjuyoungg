@@ -10,7 +10,6 @@ import java.util.Map;
 
 public class BeforeEventService {
 
-
     public static void printMenu(Order userOrder) {
         List<String> orderedMenu = new ArrayList<>();
         LinkedHashMap<String, Integer> orderItems = userOrder.getOrderItems();
