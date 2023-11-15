@@ -4,8 +4,8 @@ import static christmas.domain.benefit.DiscountType.CHRISTMAS;
 import static christmas.domain.benefit.DiscountType.SPECIAL;
 import static christmas.domain.benefit.DiscountType.WEEKDAY;
 import static christmas.domain.benefit.DiscountType.WEEKEND;
-import static christmas.service.EventPlanner.MINIMUM_PRICE_FOR_GIVEAWAY;
-import static christmas.service.EventPlanner.df;
+import static christmas.domain.service.EventPlanner.MINIMUM_PRICE_FOR_GIVEAWAY;
+import static christmas.domain.service.EventPlanner.df;
 
 import christmas.domain.benefit.Discount;
 import christmas.utils.constants.OutputComment;

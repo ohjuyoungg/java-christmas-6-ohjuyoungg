@@ -1,7 +1,7 @@
 package christmas.domain.order;
 
 import static christmas.domain.menu.MenuInfo.isDessert;
-import static christmas.service.BeforeEventService.getMenuPrice;
+import static christmas.domain.service.BeforeEventService.getMenuPrice;
 
 import christmas.domain.menu.MenuInfo;
 import java.util.LinkedHashMap;
