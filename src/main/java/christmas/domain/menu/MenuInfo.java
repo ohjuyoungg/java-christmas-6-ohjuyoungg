@@ -29,6 +29,14 @@ public enum MenuInfo {
         this.price = price;
     }
 
+    public String getMenuName() {
+        return menuName;
+    }
+
+    public int getPrice() {
+        return price;
+    }
+
     public static boolean isDrink(String menuName) {
         return isZeroCoke(menuName) || isRedWine(menuName) || isChampagne(menuName);
     }
@@ -49,11 +57,4 @@ public enum MenuInfo {
         return "샴페인".equals(menuName);
     }
 
-    public String getMenuName() {
-        return menuName;
-    }
-
-    public int getPrice() {
-        return price;
-    }
 }
