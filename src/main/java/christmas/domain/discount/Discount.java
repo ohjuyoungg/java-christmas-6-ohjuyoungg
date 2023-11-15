@@ -1,6 +1,9 @@
 package christmas.domain.discount;
 
-import static christmas.domain.discount.DiscountCalculator.*;
+import static christmas.domain.discount.DiscountCalculator.calculateChristmasDiscount;
+import static christmas.domain.discount.DiscountCalculator.calculateStarDiscount;
+import static christmas.domain.discount.DiscountCalculator.calculateWeekdayDiscount;
+import static christmas.domain.discount.DiscountCalculator.calculateWeekendDiscount;
 
 import christmas.domain.order.Order;
 import java.time.LocalDate;
@@ -10,7 +13,6 @@ import java.util.Map;
 public class Discount {
 
     private final Map<DiscountType, Integer> discountMap = new HashMap<>();
-
     private final LocalDate eventDate;
 
     public Discount(int eventDateInt, Order userOrder) {

@@ -49,7 +49,8 @@ public class MenuValidator {
         validateOrderSplit(tokenizer, validationErrors, containsNonDrink);
     }
 
-    private static void validateOrderSplit(StringTokenizer tokenizer, List<String> validationErrors, boolean containsNonDrink) {
+    private static void validateOrderSplit(StringTokenizer tokenizer, List<String> validationErrors,
+        boolean containsNonDrink) {
         int totalQuantity = 0;
         while (tokenizer.hasMoreTokens()) {
             String orderItem = tokenizer.nextToken().trim();

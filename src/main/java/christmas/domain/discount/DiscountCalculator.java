@@ -15,7 +15,6 @@ public class DiscountCalculator {
     private static final LocalDate endOfDecember = LocalDate.of(2023, 12, 1);
     public static final int MINIMUM_PRICE_FOR_GIVEAWAY = 120_000;
 
-
     public static int calculateChristmasDiscount(int eventDate) {
         int totalDiscount = 1000;
         if (eventDate >= 26) {

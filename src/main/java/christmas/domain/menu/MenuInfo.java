@@ -1,6 +1,7 @@
 package christmas.domain.menu;
 
 public enum MenuInfo {
+
     // APPETIZER
     BUTTON_MUSHROOM_SOUP("양송이수프", 6000),
     TAPAS("타파스", 5500),
