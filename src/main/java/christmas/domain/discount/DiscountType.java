@@ -1,4 +1,4 @@
-package christmas.domain.benefit;
+package christmas.domain.discount;
 
 public enum DiscountType {
     CHRISTMAS,
