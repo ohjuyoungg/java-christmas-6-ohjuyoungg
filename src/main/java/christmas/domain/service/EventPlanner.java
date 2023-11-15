@@ -1,11 +1,11 @@
 package christmas.domain.service;
 
-import static christmas.domain.benefit.DiscountType.CHRISTMAS;
-import static christmas.domain.benefit.DiscountType.SPECIAL;
-import static christmas.domain.benefit.DiscountType.WEEKDAY;
-import static christmas.domain.benefit.DiscountType.WEEKEND;
+import static christmas.domain.discount.DiscountType.CHRISTMAS;
+import static christmas.domain.discount.DiscountType.SPECIAL;
+import static christmas.domain.discount.DiscountType.WEEKDAY;
+import static christmas.domain.discount.DiscountType.WEEKEND;
 
-import christmas.domain.benefit.Discount;
+import christmas.domain.discount.Discount;
 import christmas.domain.order.Order;
 import christmas.view.OutputView;
 import java.text.DecimalFormat;
