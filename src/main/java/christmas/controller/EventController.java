@@ -1,8 +1,8 @@
 package christmas.controller;
 
 import christmas.domain.order.Order;
-import christmas.service.EventPlanner;
 import christmas.service.BeforeEventService;
+import christmas.service.EventPlanner;
 import christmas.view.InputView;
 import christmas.view.OutputView;
 
@@ -17,7 +17,7 @@ public class EventController {
         int totalPrice = BeforeEventService.calculateTotalPrice(userOrderMenu);
         OutputView.beforeDiscount(totalPrice);
         OutputView.giveawayMenu();
-        EventPlanner.giveAway(totalPrice);
+        OutputView.giveAway(totalPrice);
         OutputView.benefitDetails();
         EventPlanner.calculateBenefits(userVisitDate, userOrderMenu, totalPrice);
     }
