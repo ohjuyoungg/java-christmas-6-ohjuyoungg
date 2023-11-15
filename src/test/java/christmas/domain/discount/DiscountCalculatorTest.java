@@ -16,7 +16,7 @@ public class DiscountCalculatorTest {
     }
 
     @Test
-    void calculateChristmasDiscount_크리스마스_이후는_할인_없음() {
+    void calculateChristmasDiscount_크리스마스_이후는_할인없음() {
         int eventDate = 26;
         int christmasDiscount = DiscountCalculator.calculateChristmasDiscount(eventDate);
         assertThat(christmasDiscount).isEqualTo(0);
@@ -34,7 +34,7 @@ public class DiscountCalculatorTest {
     }
 
     @Test
-    void calculateWeekendDiscount_주말이_아니면_할인_없음() {
+    void calculateWeekendDiscount_주말이_아니면_할인없음() {
         int eventDate = 3;
         Order userOrder = new Order();
         userOrder.addOrder("해산물파스타", 1);
@@ -45,7 +45,7 @@ public class DiscountCalculatorTest {
     }
 
     @Test
-    void calculateWeekendDiscount_이벤트_이후는_할인_없음() {
+    void calculateWeekendDiscount_이벤트_이후는_할인없음() {
         int eventDate = 26;
         Order userOrder = new Order();
         userOrder.addOrder("해산물파스타", 1);
@@ -67,7 +67,7 @@ public class DiscountCalculatorTest {
     }
 
     @Test
-    void calculateWeekdayDiscount_평일이_아니면_할인_없음() {
+    void calculateWeekdayDiscount_평일이_아니면_할인없음() {
         int eventDate = 2;
         Order userOrder = new Order();
         userOrder.addOrder("제로콜라", 2);
@@ -78,7 +78,7 @@ public class DiscountCalculatorTest {
     }
 
     @Test
-    void calculateWeekdayDiscount_이벤트_이후는_할인_없음() {
+    void calculateWeekdayDiscount_이벤트_이후는_할인없음() {
         int eventDate = 26;
         Order userOrder = new Order();
         userOrder.addOrder("제로콜라", 2);
@@ -89,7 +89,7 @@ public class DiscountCalculatorTest {
     }
 
     @Test
-    void calculateStarDiscount_별이_일요일에_적용_성공() {
+    void calculateStarDiscount_별_표시날짜_일요일에_적용_성공() {
         int eventDate = 3;
         DayOfWeek dayOfWeek = DayOfWeek.SUNDAY;
 
@@ -98,8 +98,8 @@ public class DiscountCalculatorTest {
     }
 
     @Test
-    void calculateStarDiscount_별_일요일이_아니면_할인없음() {
-        int eventDate = 3;
+    void calculateStarDiscount_별_표시날짜_아니면_할인없음() {
+        int eventDate = 2;
         DayOfWeek dayOfWeek = DayOfWeek.SATURDAY;
 
         int starDiscount = DiscountCalculator.calculateStarDiscount(eventDate, dayOfWeek);
