@@ -13,15 +13,12 @@ public class BeforeEventService {
 
     public static void printMenu(Order userOrder) {
         List<String> orderedMenu = new ArrayList<>();
-
         LinkedHashMap<String, Integer> orderItems = userOrder.getOrderItems();
         for (Map.Entry<String, Integer> entry : orderItems.entrySet()) {
             String menuName = entry.getKey();
             int quantity = entry.getValue();
-
             orderedMenu.add(String.format("%s %d개", menuName, quantity));
         }
-
         for (String menu : orderedMenu) {
             System.out.println(menu);
         }
