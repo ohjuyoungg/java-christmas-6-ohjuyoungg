@@ -1,11 +1,7 @@
 package christmas.domain.service;
 
-import static christmas.domain.discount.DiscountType.CHRISTMAS;
-import static christmas.domain.discount.DiscountType.SPECIAL;
-import static christmas.domain.discount.DiscountType.WEEKDAY;
-import static christmas.domain.discount.DiscountType.WEEKEND;
-
 import christmas.domain.discount.Discount;
+import christmas.domain.discount.DiscountCalculator;
 import christmas.domain.order.Order;
 import christmas.view.OutputView;
 import java.text.DecimalFormat;
@@ -21,18 +17,6 @@ public class EventPlanner {
         OutputView.calculateTotalBenefits(beforeDiscountPrice, discount);
         int benefits = discount.getTotalAmount();
         OutputView.printAfterDiscountPrice(beforeDiscountPrice, benefits);
-        calculateEventBadge(discount, beforeDiscountPrice);
-    }
-
-    private static void calculateEventBadge(Discount discount, int beforeDiscountPrice) {
-        int totalBenefits = 0;
-        int benefits = discount.getAmount(CHRISTMAS) + discount.getAmount(WEEKDAY) + discount.getAmount(WEEKEND)
-            + discount.getAmount(SPECIAL);
-        if (beforeDiscountPrice >= MINIMUM_PRICE_FOR_GIVEAWAY) {
-            totalBenefits = benefits + 25000;
-        } else if (beforeDiscountPrice < MINIMUM_PRICE_FOR_GIVEAWAY) {
-            totalBenefits = benefits;
-        }
-        OutputView.printEventBadge(totalBenefits);
+        DiscountCalculator.calculateEventBadge(discount, beforeDiscountPrice);
     }
 }

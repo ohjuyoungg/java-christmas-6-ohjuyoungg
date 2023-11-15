@@ -1,11 +1,20 @@
 package christmas.domain.discount;
 
+import static christmas.domain.discount.DiscountType.CHRISTMAS;
+import static christmas.domain.discount.DiscountType.SPECIAL;
+import static christmas.domain.discount.DiscountType.WEEKDAY;
+import static christmas.domain.discount.DiscountType.WEEKEND;
+
 import christmas.domain.order.Order;
+import christmas.view.OutputView;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 
 public class DiscountCalculator {
+
     private static final LocalDate endOfDecember = LocalDate.of(2023, 12, 1);
+    public static final int MINIMUM_PRICE_FOR_GIVEAWAY = 120_000;
+
 
     public static int calculateChristmasDiscount(int eventDate) {
         int totalDiscount = 1000;
@@ -50,5 +59,17 @@ public class DiscountCalculator {
             discountAmount = 1000;
         }
         return discountAmount;
+    }
+
+    public static void calculateEventBadge(Discount discount, int beforeDiscountPrice) {
+        int totalBenefits = 0;
+        int benefits = discount.getAmount(CHRISTMAS) + discount.getAmount(WEEKDAY) + discount.getAmount(WEEKEND)
+            + discount.getAmount(SPECIAL);
+        if (beforeDiscountPrice >= MINIMUM_PRICE_FOR_GIVEAWAY) {
+            totalBenefits = benefits + 25000;
+        } else if (beforeDiscountPrice < MINIMUM_PRICE_FOR_GIVEAWAY) {
+            totalBenefits = benefits;
+        }
+        OutputView.printEventBadge(totalBenefits);
     }
 }
